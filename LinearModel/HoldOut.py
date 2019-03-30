@@ -87,4 +87,3 @@ if __name__=='__main__':
 
     print(error)
     print(error1, ' ', error2, ' ', error3)
-    
