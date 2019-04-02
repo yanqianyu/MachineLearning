@@ -2,7 +2,11 @@ import numpy as np
 from math import log
 import operator
 
-
+'''
+Todo:
+post
+pre
+'''
 def calcGini(dataSet):
     dataSet = np.array(dataSet)
     num = len(dataSet)
