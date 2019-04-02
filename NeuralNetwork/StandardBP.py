@@ -42,15 +42,15 @@ def sbp(hiddenLayer):
     while flag:
         for k in range(x.shape[0]):
             b = sigmoid(x.dot(v) - t0)  # [n, h]
-            y0 = sigmoid(b.dot(w) - t1)  # [1, l]
+            y0 = sigmoid(b.dot(w) - t1)  # [l, 1]
             loss = sum((y - y0) ** 2) / x.shape[0]
             if loss < error or trainNum > maxTrainNum:
                 flag = 0
                 break
             trainNum += 1
             g = y0[k] * (1 - y0[k]) * (y[k] - y0[k])  # [1, l]
-            g = g.reshape(1, g.size)  # [1, l]
-            b = b[k]
+            g = g.reshape(1, g.size)  # [1, 1]
+            b = b[k]  # [1, h]
             b = b.reshape(1, b.size)  # [1, h]
             e = b * (1 - b) * g.dot(w.T)
             w += learning_rate * b.T.dot(g)

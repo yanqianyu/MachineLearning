@@ -41,7 +41,7 @@ def abp(hiddenLayer):
 
     while flag:
         b = sigmoid(x.dot(v) - t0)  # [n, h]
-        y0 = sigmoid(b.dot(w) - t1)  # [1, l]
+        y0 = sigmoid(b.dot(w) - t1)  # [l, 1]
         loss = sum((y - y0) ** 2) / x.shape[0]
         if loss < error or trainNum > maxTrainNum:
             break
